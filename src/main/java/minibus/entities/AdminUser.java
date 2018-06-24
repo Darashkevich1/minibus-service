@@ -1,5 +1,6 @@
 package minibus.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,9 +16,13 @@ public final class AdminUser implements User {
 	
 	@Id
 	@GeneratedValue
-	int id;
+	private int id;
 	
-	private String fistName, lastName, address, email, phone;
+	private String fistName, lastName, address, phone;
+	
+	@Column(unique = true)
+	private String email;
+	
 	private UserRole role;
 	
 	@Override

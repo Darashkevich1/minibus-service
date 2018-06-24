@@ -7,14 +7,14 @@ public interface Trip {
 	int getId();
 	String getDeparturePoint();
 	String getArrivalPoint();
-	TaxiCar getTaxiCar();
+	int getCarId();
 	Date getDepartureDate();
 	Date getArrivalDate();
 	
 	void setId(int id);
 	void setDeparturePoint(String departurePoint);
 	void setArrivalPoint(String arrivalPoint);
-	void setTaxiCar(TaxiCar taxiCar);
+	void setCarId(int carId);
 	void setDepartureDate(Date departureDate);
 	void setArrivalDate(Date arrivalDate);
 }

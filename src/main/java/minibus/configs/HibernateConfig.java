@@ -13,7 +13,11 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import minibus.entities.AccessToken;
 import minibus.entities.AdminUser;
+import minibus.entities.TaxiCar;
+import minibus.entities.TaxiCompany;
+import minibus.entities.TaxiTrip;
 
 @Configuration
 @EnableTransactionManagement
@@ -25,7 +29,6 @@ public class HibernateConfig {
 		source.setUrl("jdbc:mysql://localhost:3306/minibus?serverTimezone=UTC");
 		source.setPassword("");
 		source.setUsername("root");
-		
 		return source;
 	}
 	
@@ -35,7 +38,7 @@ public class HibernateConfig {
 		LocalSessionFactoryBean session = new LocalSessionFactoryBean();
 		session.setDataSource(dataSource);
 		session.setHibernateProperties(hibernateProperties);
-		session.setAnnotatedClasses(AdminUser.class);
+		session.setAnnotatedClasses(AdminUser.class, TaxiCar.class, TaxiCompany.class, TaxiTrip.class, AccessToken.class);
 		return session;
 	}
 	
@@ -44,8 +47,8 @@ public class HibernateConfig {
 	public PlatformTransactionManager hibernateTransactionManager(LocalSessionFactoryBean sessionFactory) {
 		HibernateTransactionManager transactionManager
         = new HibernateTransactionManager();
-      transactionManager.setSessionFactory(sessionFactory.getObject());
-      return transactionManager;
+        transactionManager.setSessionFactory(sessionFactory.getObject());
+        return transactionManager;
 	}
 	
 	@Bean

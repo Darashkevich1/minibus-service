@@ -1,13 +1,47 @@
 package minibus.entities;
 
-public interface TaxiCompany {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public final class TaxiCompany implements Company {
+
+	@Id
+	@GeneratedValue
+	private int id;
 	
-	int getId();
-	User getOwner();
-	String getName();
+	private int ownerId;
+	private String name;
 	
-	void setId(int id);
-	void setOwner(User owner);
-	void setName(String name);
-	
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public int getOwnerId() {
+		return ownerId;
+	}
+
+	@Override
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+
 }

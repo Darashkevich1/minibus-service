@@ -1,14 +1,61 @@
 package minibus.entities;
 
-public interface TaxiCar {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public final class TaxiCar implements Car {
 	
-	int getId();
-	User getDriver();
-	String getRegisterNumber();
-	String getInfo();
+	@Id
+	@GeneratedValue
+	private int id;
 	
-	void setId(int id);
-	void setDriver(User driver);
-	void setRegisterNumber(String registerNumber);
-	void setInfo(String info);
+	private int driverId;
+	private String info;
+	
+	@Column(unique = true)
+	private String registerNumber;
+	
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public String getRegisterNumber() {
+		return registerNumber;
+	}
+
+	@Override
+	public String getInfo() {
+		return info;
+	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public void setRegisterNumber(String registerNumber) {
+		this.registerNumber = registerNumber;
+	}
+
+	@Override
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	@Override
+	public int getDriverId() {
+		return driverId;
+	}
+
+	@Override
+	public void setDriverId(int driverId) {
+		this.driverId = driverId;
+	}
+
 }
