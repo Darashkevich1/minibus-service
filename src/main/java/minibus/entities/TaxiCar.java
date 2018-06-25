@@ -12,7 +12,7 @@ public final class TaxiCar implements Car {
 	@GeneratedValue
 	private int id;
 	
-	private int driverId;
+	private int driverId, seatsCount;
 	private String info;
 	
 	@Column(unique = true)
@@ -56,6 +56,16 @@ public final class TaxiCar implements Car {
 	@Override
 	public void setDriverId(int driverId) {
 		this.driverId = driverId;
+	}
+
+	@Override
+	public int getSeatsCount() {
+		return seatsCount;
+	}
+
+	@Override
+	public void setSeatsCount(int seatsCount) {
+		this.seatsCount = seatsCount;
 	}
 
 }

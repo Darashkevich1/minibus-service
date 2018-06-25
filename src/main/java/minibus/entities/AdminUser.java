@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 import minibus.UserRole;
 
-@Entity
+@Entity(name = "users")
 public final class AdminUser implements User {
 	
 	public AdminUser() {
