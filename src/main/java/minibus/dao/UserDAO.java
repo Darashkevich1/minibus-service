@@ -1,4 +1,4 @@
-package minbus.dao;
+package minibus.dao;
 
 import minibus.entities.User;
 

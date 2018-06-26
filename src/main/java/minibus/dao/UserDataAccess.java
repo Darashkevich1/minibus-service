@@ -1,4 +1,4 @@
-package minbus.dao;
+package minibus.dao;
 
 import javax.transaction.Transactional;
 
@@ -11,18 +11,20 @@ import org.springframework.stereotype.Repository;
 
 import minibus.entities.User;
 
-@Repository(value = "userDataAccess")
+@Repository
 @Transactional
 public class UserDataAccess implements UserDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public User getById(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		User user = session.get(User.class, id);
-		return user;
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq("id", id));
+		return (User) criteria.uniqueResult();
 	}
 
 	@SuppressWarnings("deprecation")

@@ -9,7 +9,7 @@ import minibus.UserRole;
 
 @Entity(name = "users")
 public final class AdminUser implements User {
-	
+
 	public AdminUser() {
 		setRole(UserRole.Admin);
 	}
