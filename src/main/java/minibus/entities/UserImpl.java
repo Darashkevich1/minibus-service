@@ -8,17 +8,13 @@ import javax.persistence.Id;
 import minibus.UserRole;
 
 @Entity(name = "users")
-public final class AdminUser implements User {
+public final class UserImpl implements User {
 
-	public AdminUser() {
-		setRole(UserRole.Admin);
-	}
-	
 	@Id
 	@GeneratedValue
 	private int id;
 	
-	private String fistName, lastName, address, phone;
+	private String fistName, lastName, address, phone, password;
 	
 	@Column(unique = true)
 	private String email;
@@ -93,6 +89,16 @@ public final class AdminUser implements User {
 	@Override
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

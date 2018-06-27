@@ -1,8 +1,12 @@
 package minibus.services;
 
-import org.springframework.stereotype.Service;
+import minibus.UserRole;
+import minibus.entities.Token;
 
-@Service
-public class UserService {
-
+public interface UserService {
+	Token login(String email, String password);
+	boolean logout(String token);
+	
+	Token registerUser(String email, String password, UserRole role);
+	boolean deleteUser(String email, String token);
 }

@@ -14,7 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import minibus.entities.AccessToken;
-import minibus.entities.AdminUser;
+import minibus.entities.UserImpl;
 import minibus.entities.TaxiCar;
 import minibus.entities.TaxiCompany;
 import minibus.entities.TaxiTrip;
@@ -38,7 +38,7 @@ public class HibernateConfig {
 		LocalSessionFactoryBean session = new LocalSessionFactoryBean();
 		session.setDataSource(dataSource);
 		session.setHibernateProperties(hibernateProperties);
-		session.setAnnotatedClasses(AdminUser.class, TaxiCar.class, TaxiCompany.class, TaxiTrip.class, AccessToken.class);
+		session.setAnnotatedClasses(UserImpl.class, TaxiCar.class, TaxiCompany.class, TaxiTrip.class, AccessToken.class);
 		return session;
 	}
 	

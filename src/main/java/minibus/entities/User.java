@@ -9,6 +9,7 @@ public interface User {
 	String getLastName();
 	String getAddress();
 	String getEmail();
+	String getPassword();
 	String getPhone();
 	UserRole getRole();
 	
@@ -19,4 +20,5 @@ public interface User {
 	void setEmail(String email);
 	void setRole(UserRole userRole);
 	void setPhone(String phone);
+	void setPassword(String password);
 }
