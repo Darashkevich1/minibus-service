@@ -102,6 +102,11 @@ public class UserServiceImpl implements UserService {
 		
 		return false;
 	}
+
+	@Override
+	public User getById(int id) {
+		return userDataAccess.getById(id);
+	}
 	
 
 }

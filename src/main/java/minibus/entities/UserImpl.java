@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import minibus.UserRole;
 
 @Entity(name = "users")
@@ -14,10 +16,14 @@ public final class UserImpl implements User {
 	@GeneratedValue
 	private int id;
 	
-	private String fistName, lastName, address, phone, password;
+	private String fistName, lastName, address, phone;
 	
 	@Column(unique = true)
+	@JsonIgnore
 	private String email;
+	
+	@JsonIgnore
+	private String password;
 	
 	private UserRole role;
 	

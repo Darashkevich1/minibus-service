@@ -1,12 +1,14 @@
 package minibus.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import minibus.UserRole;
 import minibus.entities.Token;
+import minibus.entities.User;
 import minibus.services.UserService;
 
 
@@ -18,7 +20,7 @@ public class UserController {
 	UserService userServiceImpl;
 	
 	@RequestMapping("/register")
-	public Token test(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("role") String role) {
+	public Token register(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("role") String role) {
 		return userServiceImpl.registerUser(email, password, UserRole.valueOf(role));
 	}
 	
@@ -35,5 +37,10 @@ public class UserController {
 	@RequestMapping("/delete")
 	public boolean delete(@RequestParam("email") String email, @RequestParam("accessToken") String token) {
 		return userServiceImpl.deleteUser(email, token);
+	}
+	
+	@RequestMapping("/{id}")
+	public User byId(@PathVariable("id") int id) {
+		return userServiceImpl.getById(id);
 	}
 }

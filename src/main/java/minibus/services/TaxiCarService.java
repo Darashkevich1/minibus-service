@@ -33,7 +33,7 @@ public final class TaxiCarService implements CarService {
 		if(token != null && car == null) {
 			userDriverId = userDataAccess.getById(driverId);
 			userToken = userDataAccess.getById(token.getUserId());
-			if(userDriverId != null && userToken != null && 
+			if(userDriverId != null && userDriverId.getRole() == UserRole.Driver && userToken != null && 
 					(userDriverId.getId() == userToken.getId() || userToken.getRole() == UserRole.Admin)) {
 				Car new_car = new TaxiCar();
 				new_car.setDriverId(driverId);
