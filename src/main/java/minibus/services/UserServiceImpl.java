@@ -107,6 +107,12 @@ public class UserServiceImpl implements UserService {
 	public User getById(int id) {
 		return userDataAccess.getById(id);
 	}
+
+	@Override
+	public boolean emailIsFree(String email) {
+		User user = userDataAccess.getByEmail(email);
+		return user == null ? true : false;
+	}
 	
 
 }

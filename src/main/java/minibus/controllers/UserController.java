@@ -1,6 +1,7 @@
 package minibus.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import minibus.services.UserService;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 
 	@Autowired
@@ -42,5 +44,10 @@ public class UserController {
 	@RequestMapping("/{id}")
 	public User byId(@PathVariable("id") int id) {
 		return userServiceImpl.getById(id);
+	}
+	
+	@RequestMapping("/emailIsFree")
+	public boolean emailIsFree(@RequestParam("email") String email) {
+		return userServiceImpl.emailIsFree(email);
 	}
 }
