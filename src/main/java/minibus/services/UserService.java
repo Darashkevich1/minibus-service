@@ -12,4 +12,5 @@ public interface UserService {
 	
 	Token registerUser(String email, String password, UserRole role);
 	boolean deleteUser(String email, String token);
+	boolean updateUser(String firstname, String lastname, String phone, String address, String token);
 }

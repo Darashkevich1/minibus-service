@@ -8,4 +8,5 @@ public interface UserDAO {
 	
 	void addUser(User user);
 	void removeUser(User user);
+	void updateUser(User user);
 }

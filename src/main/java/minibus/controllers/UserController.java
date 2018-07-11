@@ -46,6 +46,12 @@ public class UserController {
 		return userServiceImpl.getById(id);
 	}
 	
+	@RequestMapping("/update")
+	public boolean update(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname,
+			@RequestParam("phone") String phone, @RequestParam("address") String address, @RequestParam("accessToken") String accessToken) {
+		return userServiceImpl.updateUser(firstname, lastname, phone, address, accessToken);
+	}
+	
 	@RequestMapping("/emailIsFree")
 	public boolean emailIsFree(@RequestParam("email") String email) {
 		return userServiceImpl.emailIsFree(email);

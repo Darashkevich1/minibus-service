@@ -27,8 +27,8 @@ public class HibernateConfig {
 	public DataSource dataSource() {
 		BasicDataSource source = new BasicDataSource();
 		source.setUrl("jdbc:mysql://localhost:3306/minibus?serverTimezone=UTC");
-		source.setPassword("");
-		source.setUsername("root");
+		source.setPassword("minibus-pass");
+		source.setUsername("minibus-user");
 		return source;
 	}
 	

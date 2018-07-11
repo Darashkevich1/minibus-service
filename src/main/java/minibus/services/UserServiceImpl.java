@@ -113,6 +113,23 @@ public class UserServiceImpl implements UserService {
 		User user = userDataAccess.getByEmail(email);
 		return user == null ? true : false;
 	}
+
+	@Override
+	public boolean updateUser(String firstname, String lastname, String phone, String address, String token) {
+		Token accessToken = accessTokenDAO.getByToken(token);
+		if(accessToken != null) {
+			User user = userDataAccess.getById(accessToken.getUserId());
+			if(user != null) {
+				user.setAddress(address);
+				user.setFirstName(firstname);
+				user.setLastName(lastname);
+				user.setPhone(phone);
+				userDataAccess.updateUser(user);
+				return true;
+			}
+		}
+		return false;
+	}
 	
 
 }

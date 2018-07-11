@@ -47,4 +47,10 @@ public class UserDataAccess implements UserDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.remove(user);
 	}
+
+	@Override
+	public void updateUser(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(user);
+	}
 }
