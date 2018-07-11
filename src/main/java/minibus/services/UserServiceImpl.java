@@ -77,10 +77,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean deleteUser(String email, String token) {
+	public boolean deleteUser(int id, String token) {
 		
-		if(!email.isEmpty() && !token.isEmpty()) {
-			User user_by_email = userDataAccess.getByEmail(email);
+		if(!token.isEmpty() && id > 0) {
+			User user_by_id = userDataAccess.getById(id);
 			Token user_token = accessTokenDAO.getByToken(token);
 			User user_by_token = null;
 			
@@ -88,13 +88,13 @@ public class UserServiceImpl implements UserService {
 				user_by_token = userDataAccess.getById(user_token.getUserId());
 			}
 			
-			if(user_by_email != null && user_by_token != null) {
-				if(user_by_token.getRole() == UserRole.Admin || user_by_token.getId() == user_by_email.getId()) {
-					Token t = accessTokenDAO.getByUserId(user_by_email.getId());
+			if(user_by_id != null && user_by_token != null) {
+				if(user_by_token.getRole() == UserRole.Admin || user_by_token.getId() == user_by_id.getId()) {
+					Token t = accessTokenDAO.getByUserId(user_by_id.getId());
 					if(t != null) {
 						logout(t.getAccessToken());
 					}
-					userDataAccess.removeUser(user_by_email);
+					userDataAccess.removeUser(user_by_id);
 					return true;
 				}
 			}

@@ -37,8 +37,8 @@ public class UserController {
 	}
 	
 	@RequestMapping("/delete")
-	public boolean delete(@RequestParam("email") String email, @RequestParam("accessToken") String token) {
-		return userServiceImpl.deleteUser(email, token);
+	public boolean delete(@RequestParam("id") int id, @RequestParam("accessToken") String token) {
+		return userServiceImpl.deleteUser(id, token);
 	}
 	
 	@RequestMapping("/{id}")
