@@ -1,10 +1,12 @@
 package minibus.services;
 
+import java.io.File;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.FileSystemUtils;
 
 import minibus.UserRole;
 import minibus.dao.TokenDAO;
@@ -93,6 +95,10 @@ public class UserServiceImpl implements UserService {
 					Token t = accessTokenDAO.getByUserId(user_by_id.getId());
 					if(t != null) {
 						logout(t.getAccessToken());
+					}
+					File f = new File("images-storage/"+String.valueOf(user_by_id.getId()));
+					if(f.exists()) {
+						FileSystemUtils.deleteRecursively(f);
 					}
 					userDataAccess.removeUser(user_by_id);
 					return true;
